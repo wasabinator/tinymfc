@@ -1,0 +1,6 @@
+To use TFC:
+
+1. compile .lib
+2. copy .lib to project dir
+3. add tfc.lib and comctl32.lib to project libs
+4. add tfc project dir to project path

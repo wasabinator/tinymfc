@@ -1,3 +1,5 @@
+//#include "stdafx.h"
+
 #include "rect.h"
 
 void CRect::SetRect(LONG nLeft, LONG nTop, LONG nRight, LONG nBottom)
@@ -56,6 +58,16 @@ void CRect::SetOrigin(LONG nLeft, LONG nTop)
    top = nTop;
 }
 
+void CRect::OffsetRect(LONG dx, LONG dy)
+{
+    ::OffsetRect(this, dx, dy);
+}
+
+void CRect::OffsetRect(POINT &pt)
+{
+    ::OffsetRect(this, pt.x, pt.y);
+}
+
 const CRect& CRect::operator=(const CRect& rectSrc)
 {
 	left = rectSrc.left;
@@ -66,4 +78,17 @@ const CRect& CRect::operator=(const CRect& rectSrc)
 	return *this;
 }
 
+void CRect::UnionRect(LPRECT lpRect)
+{
+    ::UnionRect(this, this, lpRect);
+}
 
+BOOL CRect::PtInRect(int x, int y)
+{
+    POINT aPoint;
+
+    aPoint.x = x;
+    aPoint.y = y;
+
+    return ::PtInRect(this, aPoint);
+}
